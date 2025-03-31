@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ColorCatcher } from '@/components/ColorCatcher';
 const Index = () => {
@@ -6,11 +7,11 @@ const Index = () => {
         <div className="relative mb-4">
           <img src="/lovable-uploads/18bd8338-2612-4ccb-a08b-47cc3faa9576.png" alt="Catppuccin mascot" className="w-32 h-32 cat-icon cute-shadow rounded-full" />
         </div>
-        <h1 className="text-4xl font-bold tracking-tighter text-center mb-2 text-accent">
+        <h1 className="text-4xl font-bold tracking-tighter text-center mb-2 gradient-text">
           Catppuccin Image Converter
         </h1>
         <p className="text-lg text-center text-muted-foreground max-w-lg">
-          Transform your images with the soothing <span className="text-primary">Catppuccin</span> color palette
+          Transform your images with the soothing <a href="https://catppuccin.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Catppuccin</a> color palette
         </p>
       </div>
       <ColorCatcher />

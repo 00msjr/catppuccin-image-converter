@@ -13,6 +13,22 @@ export const PaletteSelector: React.FC<PaletteSelectorProps> = ({
   selectedPalette,
   onPaletteChange,
 }) => {
+  // Function to get emoji based on palette key
+  const getEmojiForPalette = (key: string) => {
+    switch (key) {
+      case 'latte':
+        return '🌻';
+      case 'frappe':
+        return '🪴';
+      case 'macchiato':
+        return '🌺';
+      case 'mocha':
+        return '🌿';
+      default:
+        return '';
+    }
+  };
+
   return (
     <div className="w-full">
       <RadioGroup
@@ -46,7 +62,7 @@ export const PaletteSelector: React.FC<PaletteSelectorProps> = ({
                   style={{ backgroundColor: palette.colors.find(c => c.name === "Blue")?.hex }}
                 ></div>
               </div>
-              {palette.name}
+              {getEmojiForPalette(palette.key)}{palette.name}
             </Label>
           </div>
         ))}

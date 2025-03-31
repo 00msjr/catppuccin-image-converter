@@ -45,7 +45,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-family: "Inter", sans-serif;
   }
 }
 
@@ -77,6 +77,14 @@
 
 .cat-icon {
   animation: bounce 2s infinite alternate;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #cba6f7, #f38ba8, #89b4fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
 }
 
 @keyframes bounce {
