@@ -32,10 +32,20 @@ export const PaletteSelector: React.FC<PaletteSelectorProps> = ({
               htmlFor={palette.key}
               className="cursor-pointer flex items-center gap-2"
             >
-              <span
-                className="inline-block w-4 h-4 rounded-full"
-                style={{ backgroundColor: palette.colors.find(c => c.name === "Mauve")?.hex }}
-              ></span>
+              <div className="flex">
+                <div 
+                  className="inline-block w-3 h-6 rounded-l-full border-r-0" 
+                  style={{ backgroundColor: palette.colors.find(c => c.name === "Mauve")?.hex }}
+                ></div>
+                <div 
+                  className="inline-block w-3 h-6" 
+                  style={{ backgroundColor: palette.colors.find(c => c.name === "Pink")?.hex }}
+                ></div>
+                <div 
+                  className="inline-block w-3 h-6 rounded-r-full border-l-0" 
+                  style={{ backgroundColor: palette.colors.find(c => c.name === "Blue")?.hex }}
+                ></div>
+              </div>
               {palette.name}
             </Label>
           </div>
