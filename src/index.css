@@ -5,35 +5,36 @@
 
 @layer base {
   :root {
-    --background: 220 23% 95%; /* latte base */
-    --foreground: 234 16% 35%; /* latte text */
+    /* Mocha theme colors */
+    --background: 240 21% 15%; /* mocha base */
+    --foreground: 226 64% 88%; /* mocha text */
 
-    --card: 220 22% 92%; /* latte mantle */
-    --card-foreground: 234 16% 35%; /* latte text */
+    --card: 240 21% 12%; /* mocha mantle */
+    --card-foreground: 226 64% 88%; /* mocha text */
 
-    --popover: 220 23% 95%; /* latte base */
-    --popover-foreground: 234 16% 35%; /* latte text */
+    --popover: 240 21% 15%; /* mocha base */
+    --popover-foreground: 226 64% 88%; /* mocha text */
 
-    --primary: 266 85% 58%; /* latte mauve */
-    --primary-foreground: 220 23% 95%; /* latte base */
+    --primary: 267 84% 81%; /* mocha mauve */
+    --primary-foreground: 240 21% 15%; /* mocha base */
 
-    --secondary: 223 16% 83%; /* latte surface0 */
-    --secondary-foreground: 234 16% 35%; /* latte text */
+    --secondary: 237 16% 23%; /* mocha surface0 */
+    --secondary-foreground: 226 64% 88%; /* mocha text */
 
-    --muted: 223 16% 83%; /* latte surface0 */
-    --muted-foreground: 233 13% 41%; /* latte subtext1 */
+    --muted: 237 16% 23%; /* mocha surface0 */
+    --muted-foreground: 228 24% 72%; /* mocha subtext0 */
 
-    --accent: 231 97% 72%; /* latte lavender */
-    --accent-foreground: 220 23% 95%; /* latte base */
+    --accent: 232 97% 85%; /* mocha lavender */
+    --accent-foreground: 240 21% 15%; /* mocha base */
 
-    --destructive: 347 87% 44%; /* latte red */
-    --destructive-foreground: 220 23% 95%; /* latte base */
+    --destructive: 343 81% 75%; /* mocha red */
+    --destructive-foreground: 240 21% 15%; /* mocha base */
 
-    --border: 223 16% 83%; /* latte surface0 */
-    --input: 223 16% 83%; /* latte surface0 */
-    --ring: 266 85% 58%; /* latte mauve */
+    --border: 237 16% 23%; /* mocha surface0 */
+    --input: 237 16% 23%; /* mocha surface0 */
+    --ring: 267 84% 81%; /* mocha mauve */
 
-    --radius: 0.5rem;
+    --radius: 1rem;
   }
 }
 
@@ -44,6 +45,7 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
   }
 }
 
@@ -67,4 +69,33 @@
 
 ::-webkit-scrollbar-thumb {
   @apply bg-primary/60 rounded-full transition-colors hover:bg-primary;
+}
+
+.cute-shadow {
+  filter: drop-shadow(0px 4px 8px rgba(203, 166, 247, 0.4));
+}
+
+.cat-icon {
+  animation: bounce 2s infinite alternate;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.card {
+  @apply border-2 border-accent/30 rounded-2xl shadow-lg;
+}
+
+/* Remove default styling from App.css */
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }

@@ -8,9 +8,10 @@ import { allPalettes, CatppuccinPalette } from '@/utils/color-palettes';
 import { processImage } from '@/utils/imageProcessor';
 import { Card, CardContent } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
+import { Button } from '@/components/ui/button';
 
 export const ColorCatcher: React.FC = () => {
-  const [selectedPalette, setSelectedPalette] = useState<CatppuccinPalette>(allPalettes[0]);
+  const [selectedPalette, setSelectedPalette] = useState<CatppuccinPalette>(allPalettes[3]); // Default to Mocha
   const [originalImage, setOriginalImage] = useState<string | null>(null);
   const [processedImage, setProcessedImage] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
@@ -98,19 +99,15 @@ export const ColorCatcher: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-6">
-      <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">ColorCatcher</h1>
-        <p className="text-muted-foreground">
-          Convert your images to the beautiful Catppuccin color palette
-        </p>
-      </div>
-
-      <Card>
-        <CardContent className="pt-6">
-          <div className="space-y-4">
-            <div>
-              <h2 className="text-lg font-medium mb-2">1. Select palette</h2>
+    <div className="w-full max-w-4xl mx-auto space-y-8">
+      <Card className="border-accent/30 shadow-lg overflow-hidden">
+        <CardContent className="pt-6 p-6">
+          <div className="space-y-8">
+            <div className="bg-secondary/50 p-4 rounded-xl">
+              <h2 className="text-xl font-bold mb-3 flex items-center">
+                <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center mr-2">1</span>
+                Select palette
+              </h2>
               <PaletteSelector
                 selectedPalette={selectedPalette}
                 onPaletteChange={handlePaletteChange}
@@ -120,14 +117,17 @@ export const ColorCatcher: React.FC = () => {
               </div>
             </div>
 
-            <div>
-              <h2 className="text-lg font-medium mb-2">2. Upload an image</h2>
+            <div className="bg-secondary/50 p-4 rounded-xl">
+              <h2 className="text-xl font-bold mb-3 flex items-center">
+                <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center mr-2">2</span>
+                Upload an image
+              </h2>
               {!originalImage ? (
                 <ImageUploader onImageUpload={handleImageUpload} />
               ) : (
                 <div className="text-center">
                   <p className="mb-2">
-                    {isProcessing ? 'Processing...' : 'Image uploaded successfully!'}
+                    {isProcessing ? 'Processing...' : 'Image uploaded successfully! ✨'}
                   </p>
                   <Button
                     onClick={() => {
@@ -144,8 +144,11 @@ export const ColorCatcher: React.FC = () => {
             </div>
 
             {originalImage && processedImage && (
-              <div>
-                <h2 className="text-lg font-medium mb-4">3. Compare and download</h2>
+              <div className="bg-secondary/50 p-4 rounded-xl">
+                <h2 className="text-xl font-bold mb-4 flex items-center">
+                  <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center mr-2">3</span>
+                  Compare and download
+                </h2>
                 <ImagePreview
                   originalImage={originalImage}
                   processedImage={processedImage}
@@ -158,11 +161,13 @@ export const ColorCatcher: React.FC = () => {
       </Card>
       
       <footer className="text-center text-sm text-muted-foreground pb-8">
-        Powered by Catppuccin color palettes. Created with ❤️
+        <p>Powered by <span className="text-primary">Catppuccin</span> color palettes. Created with <span className="text-red-400">❤️</span></p>
+        <img 
+          src="/lovable-uploads/18bd8338-2612-4ccb-a08b-47cc3faa9576.png" 
+          alt="Catppuccin mascot" 
+          className="w-8 h-8 mx-auto mt-2 opacity-50 hover:opacity-100 transition-opacity"
+        />
       </footer>
     </div>
   );
 };
-
-// Add missing Button component that was used in the component
-import { Button } from '@/components/ui/button';
