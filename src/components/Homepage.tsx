@@ -8,7 +8,7 @@ import { processImage } from '@/utils/imageProcessor';
 import { Card, CardContent } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
-export const ColorCatcher: React.FC = () => {
+export const Homepage: React.FC = () => {
   const [selectedPalette, setSelectedPalette] = useState<CatppuccinPalette>(allPalettes[3]); // Default to Mocha
   const [originalImage, setOriginalImage] = useState<string | null>(null);
   const [processedImage, setProcessedImage] = useState<string | null>(null);
@@ -92,52 +92,52 @@ export const ColorCatcher: React.FC = () => {
     });
   };
   return <div className="w-full max-w-4xl mx-auto space-y-8">
-      <Card className="border-accent/30 shadow-lg overflow-hidden">
-        <CardContent className="pt-6 p-6">
-          <div className="space-y-8">
-            <div className="bg-secondary/50 p-4 rounded-xl">
-              <h2 className="text-xl font-bold mb-3 flex items-center">
-                <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center mr-2">1</span>
-                Select palette
-              </h2>
-              <PaletteSelector selectedPalette={selectedPalette} onPaletteChange={handlePaletteChange} />
-              <div className="mt-2">
-                <PaletteDisplay palette={selectedPalette} />
-              </div>
+    <Card className="border-accent/30 shadow-lg overflow-hidden">
+      <CardContent className="pt-6 p-6">
+        <div className="space-y-8">
+          <div className="bg-secondary/50 p-4 rounded-xl">
+            <h2 className="text-xl font-bold mb-3 flex items-center">
+              <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center mr-2">1</span>
+              Select palette
+            </h2>
+            <PaletteSelector selectedPalette={selectedPalette} onPaletteChange={handlePaletteChange} />
+            <div className="mt-2">
+              <PaletteDisplay palette={selectedPalette} />
             </div>
+          </div>
 
-            <div className="bg-secondary/50 p-4 rounded-xl">
-              <h2 className="text-xl font-bold mb-3 flex items-center">
-                <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center mr-2">2</span>
-                Upload an image
-              </h2>
-              {!originalImage ? <ImageUploader onImageUpload={handleImageUpload} /> : <div className="text-center">
-                  <p className="mb-2">
-                    {isProcessing ? 'Processing...' : 'Image uploaded successfully! ✨'}
-                  </p>
-                  <Button onClick={() => {
+          <div className="bg-secondary/50 p-4 rounded-xl">
+            <h2 className="text-xl font-bold mb-3 flex items-center">
+              <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center mr-2">2</span>
+              Upload an image
+            </h2>
+            {!originalImage ? <ImageUploader onImageUpload={handleImageUpload} /> : <div className="text-center">
+              <p className="mb-2">
+                {isProcessing ? 'Processing...' : 'Image uploaded successfully! ✨'}
+              </p>
+              <Button onClick={() => {
                 setOriginalImage(null);
                 setProcessedImage(null);
               }} variant="secondary" className="mt-2">
-                    Upload Another Image
-                  </Button>
-                </div>}
-            </div>
-
-            {originalImage && processedImage && <div className="bg-secondary/50 p-4 rounded-xl">
-                <h2 className="text-xl font-bold mb-4 flex items-center">
-                  <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center mr-2">3</span>
-                  Compare and download
-                </h2>
-                <ImagePreview originalImage={originalImage} processedImage={processedImage} onDownload={handleDownload} />
-              </div>}
+                Upload Another Image
+              </Button>
+            </div>}
           </div>
-        </CardContent>
-      </Card>
-      
-      <footer className="text-center text-sm text-muted-foreground pb-8">
-        <p className="">Powered by <span className="text-primary">Catppuccin</span> color palettes. Created with <span className="text-red-400">❤️</span></p>
-        <img src="/lovable-uploads/18bd8338-2612-4ccb-a08b-47cc3faa9576.png" alt="Catppuccin mascot" className="w-8 h-8 mx-auto mt-2 opacity-50 hover:opacity-100 transition-opacity" />
-      </footer>
-    </div>;
+
+          {originalImage && processedImage && <div className="bg-secondary/50 p-4 rounded-xl">
+            <h2 className="text-xl font-bold mb-4 flex items-center">
+              <span className="bg-primary text-primary-foreground w-8 h-8 rounded-full flex items-center justify-center mr-2">3</span>
+              Compare and download
+            </h2>
+            <ImagePreview originalImage={originalImage} processedImage={processedImage} onDownload={handleDownload} />
+          </div>}
+        </div>
+      </CardContent>
+    </Card>
+
+    <footer className="text-center text-sm text-muted-foreground pb-8">
+      <p className="">Powered by <span className="text-primary">Catppuccin</span> color palettes. Created with <span className="text-red-400">❤️</span></p>
+      <img src="/catp.png" alt="Catppuccin mascot" className="w-8 h-8 mx-auto mt-2 opacity-50 hover:opacity-100 transition-opacity" />
+    </footer>
+  </div>;
 };
